@@ -1,4 +1,8 @@
 from app import App
+from file_manager import FileManager
+import json
+import pprint
+
 
 class UI:
     def __init__(self):
@@ -38,7 +42,10 @@ class UI:
 
 
     def list_people(self):
-        print("list_people() method called...")
+      f = open("people_list.json")
+      json_file = json.load(f)
+      pprint.pprint(json_file)
+      
 
     def delete_person(self):
         print("delete_person() method called...")
