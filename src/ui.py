@@ -1,7 +1,7 @@
 from app import App
 from file_manager import FileManager
 import json
-import pprint
+
 
 
 class UI:
@@ -42,10 +42,57 @@ class UI:
 
 
     def list_people(self):
-      f = open("people_list.json")
-      json_file = json.load(f)
-      pprint.pprint(json_file)
+      with open("people_list.json", "r") as f:
+        json_file = json.load(f)
+        i=1
+        for entry in json_file:
+          print(f"Customer number {i}")
+          print("First name: ", json_file[entry].get("firstName"))
+          print("Last name: ", json_file[entry].get("lastName"))
+          print("\n\n")
+          i=i+1 
+
+    def delete_person(self):  
+      delete_person= input("Please input last name of customer to delete?: ")
+      with open("people_list.json", "r") as f:
+          json_file = json.load(f)
+
+          if delete_person in json_file:
+             json_file.pop(delete_person)
+
+             with open("people_list.json", "w") as delete:
+                data1 = json.dump(json_file, delete)
+                print("Sucessfully deleted")
+
+
+
+      #  new_data =[]
+       # with open("people_list.json", "r") as f:
+        #  json_file = json.load(f)
+        
+  #      i = (f"customer number {i}")
+   #     for entry in json_file:
+    #       if i ==int(delete_person):
+     #         del json_file[i]
+      #  with open ("people_list.json", "w") as f:
+       ##  print(new_data)
+            
+
+    
+    
+    
+
+           
       
 
-    def delete_person(self):
-        print("delete_person() method called...")
+         
+     
+         
+
+
+         
+      
+      
+  
+
+

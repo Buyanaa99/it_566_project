@@ -9,6 +9,5 @@ class FileManager:
         self.people_dictionary[last_name]["firstName"] = first_name
         self.people_dictionary[last_name]["middleName"] = middle_name
         self.people_dictionary[last_name]["lastName"] = last_name
-        
         with open("people_list.json",mode="w") as f:
             f.write(json.dumps(self.people_dictionary))
